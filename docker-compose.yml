@@ -1,0 +1,13 @@
+version: "3.3"
+
+services:
+  app:
+    container_name: barcode-qrcode-app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8501:5000"
+    command: ["python", "-m", "uvicorn", "app.main:app", "--port=5000", "--host=0.0.0.0"]
+    volumes:
+      - ./:/app/
